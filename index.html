@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade 10 Classmates System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8fbff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #64c2ba;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        /* RIGHT BOX */
+        .info-box {
+            width: 28%;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        /* CENTER BUTTONS */
+        .center {
+            width: 40%;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: block;
+            width: 70%;
+            margin: 10px auto;
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .blue {
+            background: #b0ece4;
+        }
+
+        .green {
+            background: #9effca;
+        }
+
+        /* LIST */
+        .list-title {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #71b8a0;
+        }
+
+        .list {
+            width: 70%;
+            margin: auto;
+            margin-top: 10px;
+        }
+
+        .student {
+            background: rgb(230, 255, 245);
+            border: 1px solid #82af9e;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .student:hover {
+            background: #f0f6ff;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Grade 10 Classmates System</h1>
+<div class="subtitle">Add and view your classmates easily</div>
+
+<div class="main">
+
+    <!-- CENTER BUTTONS -->
+    <div class="center">
+        <div class="btn blue" onclick="addClassmate()">Add Classmate</div>
+        <div class="btn green" onclick="showList()">Show List</div>
+    </div>
+
+    <!-- RIGHT SIDE INPUT -->
+    <div class="info-box">
+        <h3>Classmate Details</h3>
+
+        <input id="name" placeholder="Enter name">
+        <input id="section" placeholder="Enter section">
+        <input id="subject" placeholder="Enter favorite subject">
+    </div>
+
+</div>
+
+<!-- LIST -->
+<div class="list-title">Classmate List</div>
+
+<div class="list" id="list">
+
+    <div class="student">Hi, I am Dale from Section Amethyst. My favorite subject is English.</div>
+    <div class="student">Hi, I am Ana from Section 10-A. My favorite subject is Math.</div>
+    <div class="student">Hi, I am Ben from Section 10-A. My favorite subject is Science.</div>
+    <div class="student">Hi, I am Cara from Section 10-B. My favorite subject is English.</div>
+    <div class="student">Hi, I am David from Section 10-B. My favorite subject is History.</div>
+    
+
+</div>
+
+<div class="footer">
+   
+</div>
+
+<script>
+function addClassmate() {
+    let name = document.getElementById("name").value;
+    let section = document.getElementById("section").value;
+    let subject = document.getElementById("subject").value;
+
+    if (name === "" || section === "" || subject === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let list = document.getElementById("list");
+
+    let newStudent = document.createElement("div");
+    newStudent.className = "student";
+    newStudent.innerHTML =
+        "Hi, I am " + name +
+        " from Section " + section +
+        ". My favorite subject is " + subject + ".";
+
+    list.appendChild(newStudent);
+
+    document.getElementById("name").value = "";
+    document.getElementById("section").value = "";
+    document.getElementById("subject").value = "";
+}
+
+function showList() {
+    document.getElementById("list").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
